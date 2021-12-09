@@ -2,64 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chuyển dổi tiền tệ</title>
+    <title>Title</title>
 </head>
 <body>
-<form>
-    <table>
-        <tr>
-            <th>Amount</th>
-            <th>From currency</th>
-            <th>To Currency</th>
-            <td></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="amount" value=""></td>
-            <td><select id="fromCurrency">
-                <option value="VND">Việt Nam đồng</option>
-                <option value="Dollars">Dollars</option>
+<h3>Convert Currency</h3>
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>From currency</th>
+        <td>To currency</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <input id="amount" type="text">
+        </td>
+        <td>
+            <select id="fromCurrency">
+                <option value="vnd">VND</option>
+                <option value="usd">USD</option>
             </select>
-            </td>
-            <td><select id="toCurrency">
-                <option value="Dollars">Dollars</option>
-                <option value="VND">Việt Nam đồng</option>
+        </td>
+        <td>
+            <select id="toCurrency">
+                <option value="vnd">VND</option>
+                <option value="usd">USD</option>
             </select>
-            </td>
-            <td>
-                <button style="background-color: rebeccapurple;color: white;border-radius: 5px"
-                        onclick="mul()">Convert
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <th style="color: blue">Result:</th>
-            <td id="result"></td>
-        </tr>
-    </table>
-</form>
+        </td>
+        <td>
+            <button onclick="convert()"
+                    style="background-color: #b5b5fc;
+            color: white;
+            border-radius: 5px">Convert
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td><p id="result"></p></td>
+    </tr>
+</table>
 <script>
+    <!--    Sẽ có 3 TH: -->
+    /*
+    * TH1: 2 cái value option = nhau
+    * TH2: USD -> VND => Tỉ giá: 23000
+    * TH3: VND -> USD => Tỉ giá: 1/23000;
+    * */
     function convert() {
         let amount = document.getElementById("amount").value;
         let fromCurrency = document.getElementById("fromCurrency").value;
         let toCurrency = document.getElementById("toCurrency").value;
         if (fromCurrency === toCurrency) {
             let result = amount;
-            document.getElementById("result").innerHTML = "Convert" + result;
-        } else if (fromCurrency === "VND") {
+            document.getElementById("result").innerHTML = "Convert:" + result;
+        } else if (fromCurrency === "vnd") {
             let result = amount / 23000;
-            document.getElementById("result").innerHTML = "Convert" + result;
+            document.getElementById("result").innerHTML = "Convert:" + result;
         } else {
             let result = amount * 23000;
-            document.getElementById("result").innerHTML = "Convert" + result;
+            document.getElementById("result").innerHTML = "Convert:" + result;
         }
     }
-
-    <!-- sẽ có 3 TH: -->
-    /*
-    *TH1: 2 cái value option = nhau
-    * TH2: USD ->VND => Tỉ giá 23000
-    * TH3: VND ->USD => Tỉ giá 1/23000
-     */
 </script>
 </body>
 </html>
